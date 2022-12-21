@@ -9,7 +9,7 @@ function Home() {
   const [openModal, setOpenModal] = useState(false);
   const headertext = "Make your goals come true";
   const newGoal = "New Goal";
-  const submitButton = "submit";
+  const type = "add"
   const button = "button"
 
   const handleClick =() =>{
@@ -24,7 +24,7 @@ function Home() {
         <option value="undone">undone</option>
         <option value="done">done</option>
       </StatusButton>
-      <GoalModal openModal={openModal} setOpenModal={setOpenModal}/>
+      <GoalModal typeModal={type} openModal={openModal} setOpenModal={setOpenModal}/>
     </div>
   );
 }

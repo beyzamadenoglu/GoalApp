@@ -31,11 +31,22 @@ export const goalSlice = createSlice({
             }
         },
 
-        deleteGoal:(state, action) => {
-            
+        deleteItem:(state, action) => {
+            const goalList = window.localStorage.getItem('goalList');
+            if(goalList){
+                const goalListArr = JSON.parse(goalList);
+                goalListArr.forEach((goal, index) => {
+                    if(goal.id === action.payload){
+                        goalListArr.splice(index, 1);
+                    }
+                });
+
+                window.localStorage.setItem('goalList', JSON.stringify(goalListArr));
+                state.goalList = goalListArr;
+            }
         }
     }
 });
 
-export const { addGoal } = goalSlice.actions;
+export const { addGoal, deleteItem,  } = goalSlice.actions;
 export default goalSlice.reducer;

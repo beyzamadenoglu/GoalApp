@@ -1,38 +1,45 @@
 import React, { useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import toast from 'react-hot-toast';
-import moment from 'moment';
+import toast from "react-hot-toast";
+import moment from "moment";
 import uuid from "react-uuid";
 import Button from "../components/Button";
 import { addGoal } from "../slices/goalSlice";
 
-function GoalModal({ openModal, setOpenModal }) {
+function GoalModal({ openModal, setOpenModal, typeModal }) {
   const [goalName, setGoalName] = useState("");
   const [status, setStatus] = useState("Undone");
   const submitButton = "submit";
   const button = "button";
-  const add = "Add Goal";
   const cancel = "Cancel";
 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("did")
-    if (goalName && status) {
-      dispatch(
-        addGoal({
-          id: uuid(),
-          time: moment().format(' h:mm:ss a, MMMM Do YYYY'),
-          goalName: goalName,
-          status: status,
-        })
-      );
-      toast.success('Goad Added');
-      setOpenModal(false);
-    } if(goalName === ''){
-      toast.error('Goal should not be empty.')
+    if (goalName.trim() && status) {
+      if (typeModal === "add") {
+        dispatch(
+          addGoal({
+            id: uuid(),
+            time: moment().format(" h:mm:ss a, MMMM Do YYYY"),
+            goalName: goalName,
+            status: status,
+          })
+        );
+        toast.success("Goad Added");
+        setOpenModal(false);
+      }
+      if (typeModal === "update") {
+        console.log("updating task");
+      }
+      if (goalName === "") {
+        toast.error("Goal should not be empty.");
+        return;
+      }
+    } else {
+      toast.error("Goal should not be empty!!.");
     }
   };
 
@@ -47,7 +54,7 @@ function GoalModal({ openModal, setOpenModal }) {
           />
           <div className="modal-container">
             <form onSubmit={(e) => handleSubmit(e)}>
-              <h2>Add Your Goal</h2>
+              <h2>{typeModal === "update" ? "Update" : "Add"} Your Goal</h2>
               <label htmlFor="title">
                 Goal
                 <input
@@ -70,7 +77,10 @@ function GoalModal({ openModal, setOpenModal }) {
                 </select>
               </label>
               <div className="action-buttons">
-                <Button type={submitButton} text={add}></Button>
+                <Button
+                  type={submitButton}
+                  text={typeModal === "update" ? "Update Goal" : "Add Goal"}
+                ></Button>
                 <Button
                   type={button}
                   text={cancel}
