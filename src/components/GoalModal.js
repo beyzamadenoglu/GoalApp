@@ -8,23 +8,23 @@ import Button from "../components/Button";
 import { addGoal, updateItem } from "../slices/goalSlice";
 
 function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
+  const dispatch = useDispatch();
+
   const [goalName, setGoalName] = useState("");
   const [status, setStatus] = useState("Undone");
   const submitButton = "submit";
   const button = "button";
   const cancel = "Cancel";
 
-  useEffect(()=>{
-    if(typeModal==='update' && goal) {
-        setGoalName(goal.goalName);
-        setStatus(goal.status);
-    }else{
-      setGoalName('');
+  useEffect(() => {
+    if (typeModal === "update" && goal) {
+      setGoalName(goal.goalName);
+      setStatus(goal.status);
+    } else {
+      setGoalName("");
       setStatus("Undone");
     }
-  },[typeModal, goal, openModal])
-
-  const dispatch = useDispatch();
+  }, [typeModal, goal, openModal]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,27 +39,23 @@ function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
           })
         );
         toast.success("Goad Added");
-        setOpenModal(false);
       }
       if (typeModal === "update") {
-        if(goal.goalName !== goalName || goal.status !== status){
+        if (goal.goalName !== goalName || goal.status !== status) {
           dispatch(
             updateItem({
               ...goal,
-              goal,
-              status
-
+              goalName,
+              status,
             })
-          )
-        }else{
-          toast.error("No changes update!")
+          );
+          toast.success("Goal Updated.");
+        } else {
+          toast.error("No changes update!");
         }
-        
       }
-      if (goalName === "") {
-        toast.error("Goal should not be empty.");
-        return;
-      }
+      setOpenModal(false);
+     
     } else {
       toast.error("Goal should not be empty!!.");
     }

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { deleteItem } from "../slices/goalSlice";
 import GoalModal from './GoalModal';
 
 function Goal({ goal }) {
+  const dispatch = useDispatch();
 
   const [updateModal, setUpdateModal] = useState(false);
-  const dispatch = useDispatch();
+ 
 
   const type = "update";
 
@@ -16,8 +18,8 @@ function Goal({ goal }) {
   };
 
   const deleteGoal = () => {
-    console.log("clicked");
     dispatch(deleteItem(goal.id));
+    toast.success("Goal Deleted.")
   };
 
   return (
@@ -33,7 +35,7 @@ function Goal({ goal }) {
           <div className="" onClick={deleteGoal} role={"button"}>
             <AiOutlineDelete />
           </div>
-          <div className="" onClick={editGoal} role={"button"}>
+          <div className="" onClick={editGoal} role={"sub"}>
             <AiOutlineEdit />
           </div>
         </div>
