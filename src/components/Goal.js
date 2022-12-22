@@ -38,7 +38,7 @@ function Goal({ goal }) {
           </div>
         </div>
       </div>
-        <GoalModal typeModal={type} openModal={updateModal} setOpenModal={setUpdateModal}/>
+        <GoalModal typeModal={type} openModal={updateModal} setOpenModal={setUpdateModal} goal={goal}/>
     </>
   );
 }

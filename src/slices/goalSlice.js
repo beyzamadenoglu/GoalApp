@@ -40,13 +40,27 @@ export const goalSlice = createSlice({
                         goalListArr.splice(index, 1);
                     }
                 });
-
                 window.localStorage.setItem('goalList', JSON.stringify(goalListArr));
+                state.goalList = goalListArr;
+            }
+        },
+
+        updateItem:(state, action) => {
+            const goalList = window.localStorage.getItem('goalList');
+            if(goalList){
+                const goalListArr = JSON.parse('goalList');
+                goalListArr.forEach((goal, index) => {
+                    if(goal.id === action.payload.id){
+                        goal.status = action.payload.status;
+                        goal.goalName = action.goal.goalName;
+                    }
+                });
+                window.localStorage.setItem('goalList', JSON.stringify(goalListArr))
                 state.goalList = goalListArr;
             }
         }
     }
 });
 
-export const { addGoal, deleteItem,  } = goalSlice.actions;
+export const { addGoal, deleteItem, updateItem } = goalSlice.actions;
 export default goalSlice.reducer;
