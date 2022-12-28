@@ -11,6 +11,7 @@ const getInitialGoals = () => {
 
 const initialState = { 
     goalList: getInitialGoals(),
+    filtered: "all", 
 }
 
 export const goalSlice = createSlice({
@@ -59,8 +60,12 @@ export const goalSlice = createSlice({
                 state.goalList = goalListArr;
             }
         },
+
+        updateFilter:(state, action) => {
+            state.filtered = action.payload;
+        }
     }
 });
 
-export const { addGoal, deleteItem, updateItem } = goalSlice.actions;
+export const { addGoal, deleteItem, updateFilter, updateItem } = goalSlice.actions;
 export default goalSlice.reducer;

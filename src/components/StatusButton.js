@@ -1,8 +1,8 @@
 import React from 'react'
 
-function StatusButton({ children, text }) {
+function StatusButton({ children, func }) {
   return (
-    <select>
+    <select onChange={func}>
     {children}
     </select>
   )

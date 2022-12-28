@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import moment from "moment";
 import uuid from "react-uuid";
+
 import Button from "../components/Button";
 import { addGoal, updateItem } from "../slices/goalSlice";
 
@@ -33,7 +34,7 @@ function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
         dispatch(
           addGoal({
             id: uuid(),
-            time: moment().format(" h:mm:ss a, MMMM Do YYYY"),
+            time: moment().format(" h:mm a, MMMM Do YYYY"),
             goalName: goalName,
             status: status,
           })
