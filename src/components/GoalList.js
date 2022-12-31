@@ -3,25 +3,20 @@ import { useSelector } from "react-redux";
 import Goal from "../components/Goal";
 
 function GoalList() {
-  const filter = useSelector((state) => state.goal.filtered);
-
   const goalList = useSelector((state) => state.goal.goalList);
-  console.log(goalList);
+  const filter = useSelector((state) => state.goal.filter);
+
   const filteredList = [...goalList];
 
-  filteredList.sort(function (a, b) {
-    return new Date(b.date) - new Date(a.date);
+  const filteredByStatusList = filteredList.filter((item) => {
+    if (filter === "all") return true;
+      return item.status === filter;    
   });
 
-  const filteredByStatusList = filteredList.filter((item) => {
-    if (filter === "all") {
-      return true;
-    }
-    return item.status === filter;
-  });
-  
   return (
-    <div>
+    <div className="list-container">
+    {console.log("sdvsdfvsdf", filteredList)}
+    {console.log("aaaa", filteredByStatusList)}
       {filteredByStatusList && filteredByStatusList.length > 0
         ? filteredByStatusList.map((goal) => <Goal key={goal.id} goal={goal} />)
         : "noShow"}

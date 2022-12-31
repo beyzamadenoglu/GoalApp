@@ -11,21 +11,20 @@ function Goal({ goal }) {
 
   const [updateModal, setUpdateModal] = useState(false);
   const [check, setCheck] = useState(() => {
-    if(goal.status === "Done") {
+    if (goal.status === "Done") {
       return true;
-    } 
-    else return false;
+    }
+    return false;
   });
-
   const type = "update";
 
   useEffect(() => {
-   handleCheck();
+    handleCheck();
   }, [check]);
 
   useEffect(() => {
     if (goal.status === "Done") {
-      console.log("fssf" || false);
+      console.log("fssf");
       setCheck(true);
     } else {
       setCheck(false);
@@ -43,6 +42,7 @@ function Goal({ goal }) {
 
   const handleCheck = () => {
     setCheck(!check);
+
     dispatch(
       updateItem({
         ...goal,
@@ -53,24 +53,22 @@ function Goal({ goal }) {
 
   return (
     <>
-      <div>
-        <div>
-          <Tooltip title={`You ${check ? "" : "did not"} completed task!`}>
-            <Checkbox checked={check} onChange={handleCheck} />
-          </Tooltip>
-          <p className="goal-item">{goal.goalName}</p>
-        </div>
-        <div>
-          <p className="goal-time">{goal.time}</p>
-        </div>
+      <div className = { goal.status === "Done" ? "goal-row goal-striked" : "goal-row"}>
         <div className="goal-actions">
           <div className="" onClick={deleteGoal} role={"button"}>
             <AiOutlineDelete />
           </div>
-          <div className="" onClick={editGoal} role={"button"}>
+          <div onClick={editGoal} role={"button"}>
             <AiOutlineEdit />
           </div>
         </div>
+        <div className="goal-content">
+          <p className="goal-item">{goal.goalName}</p>
+          <small className="goal-time">{goal.time}</small>
+        </div>
+        <Tooltip title={`You ${check ? "" : "did not"} completed task!`}>
+          <Checkbox style={{ color: '#4a4e32b5' }} checked={check} onChange={handleCheck} />
+        </Tooltip>
       </div>
       <GoalModal
         typeModal={type}

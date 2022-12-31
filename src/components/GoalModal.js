@@ -39,7 +39,7 @@ function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
             status: status,
           })
         );
-        toast.success("Goad Added");
+        toast.success("Goal Added");
       }
       if (typeModal === "update") {
         if (goal.goalName !== goalName || goal.status !== status) {
@@ -67,7 +67,7 @@ function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
       {openModal && (
         <div className="modal-wrapper">
           <AiOutlineCloseCircle
-            className="modal-button"
+            className="modal-button add-close"
             role="button"
             onClick={() => setOpenModal(false)}
           />
@@ -83,6 +83,7 @@ function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
                   onChange={(e) => setGoalName(e.target.value)}
                 ></input>
               </label>
+              <div className="container-select">
               <label htmlFor="status">
                 Status
                 <select
@@ -91,16 +92,18 @@ function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                 >
-                  <option value="undone">Undone</option>
+                  <option value="Undone">Undone</option>
                   <option value="Done">Done</option>
                 </select>
               </label>
+              </div>
               <div className="action-buttons">
-                <Button
+                <Button className="button"
                   type={submitButton}
                   text={typeModal === "update" ? "Update Goal" : "Add Goal"}
                 ></Button>
                 <Button
+                className="button"
                   type={button}
                   text={cancel}
                   func={() => setOpenModal(false)}
