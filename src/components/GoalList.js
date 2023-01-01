@@ -19,7 +19,7 @@ function GoalList() {
     {console.log("aaaa", filteredByStatusList)}
       {filteredByStatusList && filteredByStatusList.length > 0
         ? filteredByStatusList.map((goal) => <Goal key={goal.id} goal={goal} />)
-        : "noShow"}
+        : <p className="no-goal-text"> Add your goals right now! </p>}
     </div>
   );
 }

@@ -24,7 +24,6 @@ function Goal({ goal }) {
 
   useEffect(() => {
     if (goal.status === "Done") {
-      console.log("fssf");
       setCheck(true);
     } else {
       setCheck(false);

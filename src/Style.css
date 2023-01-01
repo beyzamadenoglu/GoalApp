@@ -11,14 +11,14 @@ body {
   align-items: center;
   height: 100vh;
   background: gray;
-  background : url("../src/Images/uibackground.jpg") center no-repeat;
+  background: url("../src/Images/uibackground.jpg") center no-repeat;
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
 }
 
 .header {
-  background: linear-gradient(-45deg, #85bfef,  #7e2f22, #3f3a26, #dadfe5);
+  background: linear-gradient(-45deg, #85bfef, #7e2f22, #3f3a26, #dadfe5);
   background-size: 800% 800%;
   animation: gradient 10s ease infinite;
   text-align: center;
@@ -39,13 +39,15 @@ body {
 
 @keyframes gradient {
   0% {
-      background-position:0% 70%
+    background-position: 0% 70%
   }
+
   50% {
-    background-position:100% 30%
+    background-position: 100% 30%
   }
+
   100% {
-    background-position:0% 70%
+    background-position: 0% 70%
   }
 }
 
@@ -66,7 +68,7 @@ body {
   cursor: pointer;
 }
 
-.add-close:hover{
+.add-close:hover {
   background: rgba(255, 255, 255, 0.34);
 }
 
@@ -75,8 +77,9 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
- 
+
 }
+
 .modal-container {
   width: 320px;
   background-color: #fff;
@@ -85,13 +88,13 @@ body {
   padding: 30px 30px 70px;
   color: #fff;
   margin: 40px auto;
-  background-color: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
   border-radius: 15px;
   padding: 32px;
   backdrop-filter: blur(10px);
-  
+
 }
 
 .modal-button {
@@ -99,17 +102,19 @@ body {
   border: none;
 }
 
-.goal-actions svg{
-  fill: #2e3218;
+.goal-actions svg {
+  fill: #2e3218d9;
+  transform: scale(1.4);
 }
-.goal-actions svg:hover{
-  color: red;
+
+.goal-actions svg:hover {
+  transform: scale(1.8);
 }
 
 input,
 label,
 select {
-  display: block;
+  display: block !important;
   left: auto;
   outline: none;
   margin-top: 15px;
@@ -122,7 +127,9 @@ select {
   width: 100%;
 }
 
-input:focus, textarea:focus, select:focus{
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
 }
 
@@ -138,29 +145,27 @@ select {
   text-transform: uppercase;
   appearance: none;
   position: relative;
- /** box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; **/
+  /** box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; **/
   background: transparent;
   /**backdrop-filter: blur(5px); **/
   cursor: pointer;
   color: white;
-  outline:none;
+  outline: none;
   font-family: 'Signika Negative', sans-serif;
   background: rgba(255, 255, 255, 0.19);
-  box-shadow:rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset, rgba(255, 255, 255, 0.14) 0px 30px 60px -12px inset ;
- backdrop-filter: blur(2px);
- border: none;
- margin-left: auto;
- margin-bottom: 4%;
- width: 22%;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset, rgba(255, 255, 255, 0.14) 0px 30px 60px -12px inset;
+  backdrop-filter: blur(2px);
+  border: none;
+  width: 22%;
 }
 
-option{
+option {
   background: transparent;
   backdrop-filter: blur(5px);
   color: black;
 }
 
-.modal-wrapper input{
+.modal-wrapper input {
   display: block;
   width: 100%;
   overflow: hidden;
@@ -168,30 +173,30 @@ option{
   min-height: 40px;
   line-height: 20px;
   color: #fff;
-	background-color: transparent;
+  background-color: transparent;
   border: none;
   border-radius: 0;
   border-bottom: 1px solid #6f715e;
 }
 
-.action-buttons{
+.action-buttons {
   display: block;
   margin-top: 14%;
   padding: 5px;
 }
 
-.action-buttons button{
+.action-buttons button {
   display: inline-block;
   border: 0;
   text-decoration: none;
   margin: 4px 13px;
   padding: 4px;
   border-radius: 15px;
-  background-color: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 14px;
   letter-spacing: 2px;
   cursor: pointer;
@@ -199,23 +204,24 @@ option{
 }
 
 .list-container {
-  background: rgba(255, 255, 255, 0.14);
-  padding: 24px;
-  backdrop-filter: blur(2px);
+  background: rgba(102, 97, 97, 0.17);
+  padding: 13px;
+  backdrop-filter: blur(4px);
   border-radius: 20px;
 }
+
 .goal-row {
   display: flex;
   flex-direction: row;
-  background:rgba(255, 255, 255, 0.19);
+  background: rgba(255, 255, 255, 0.19);
   margin: 0.2em;
   padding: 0.2em;
   border-radius: 7px;
 }
 
-.button svg{
+.button svg {
   margin-left: 496px;
-} 
+}
 
 
 .goal-actions {
@@ -231,43 +237,43 @@ option{
 
 .goal-content {
   width: 100%;
+  color: #252218;
+  font-weight: bold;
 }
 
 .goal-content small {
   float: right;
-  font-style: italic;
+  font-style: italic !important;
+  color: #252218ba;
 }
 
 .goal-striked .goal-content {
-  text-decoration:line-through;
+  text-decoration: line-through;
   font-style: italic;
   color: rgb(68, 68, 68);
 }
+.no-goal-text{
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+
+ 
+}
 
 @media only screen and (max-width: 600px) {
-  .header{
-    font-size: 23px;
-  }
-  .list-container{
-    margin: 0px 40px;
-    padding: 10px 19px;
+  .header {
+    margin-top: -15%;
+    font-size: 30px;
   }
 
-  .goal-row{
-    padding: 0px 30px;
-    margin: -3px 0px;
-  }
+  .list-container {}
+
+  .goal-row {}
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .header{
-    font-weight: 23px 40px;
-    text-align: center;
-  }
+  .header {}
 
-  .list-container{
-    margin: 20px 40px;
-    padding: 10px 30px;
-  }
+  .list-container {}
 }
