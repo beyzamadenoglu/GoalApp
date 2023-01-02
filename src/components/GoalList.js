@@ -37,7 +37,7 @@ function GoalList() {
         <div id="list-container">
           {currentList && currentList.length > 0
           ? currentList.map((goal) => <Goal key={goal.id} goal={goal} />)
-          : <p className="no-goal-text" style={{ color: '#373123' }}> {textList[filterStatus.toLowerCase()]} </p>}
+          : <p className="no-goal-text"> {textList[filterStatus.toLowerCase()]} </p>}
 
         </div>
       </>
@@ -64,11 +64,11 @@ function GoalList() {
         <Goals currentList={currentItems} />
         <ReactPaginate
           breakLabel="..."
-          nextLabel=">>"
+          nextLabel="next"
           onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
+          pageRangeDisplayed={2}
           pageCount={pageCount}
-          previousLabel="<<"
+          previousLabel="prev"
           renderOnZeroPageCount={null}
         />
       </>
@@ -83,8 +83,9 @@ function GoalList() {
         <option value="Undone">undone</option>
         <option value="Done">done</option>
       </StatusButton>}
-      <div className="pagination"></div>
-      <PaginatedItems itemsPerPage={5} />
+         <PaginatedItems itemsPerPage={5} />
+   
+      
     </>
   );
 }

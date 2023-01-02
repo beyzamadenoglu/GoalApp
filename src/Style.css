@@ -222,7 +222,7 @@ option {
 .goal-row {
   display: flex;
   flex-direction: row;
-  background: rgba(255, 255, 255, 0.19);
+  background: rgba(255, 255, 255, 0.3);
   margin: 0.2em;
   padding: 0.2em;
   border-radius: 7px;
@@ -264,6 +264,7 @@ option {
   text-align: center;
   font-family: 'Pacifico', cursive;
   font-size: 20px;
+  color: rgb(47 35 26);
 }
 
 .App {
@@ -282,41 +283,37 @@ h1 {
 ul[role=navigation] {
   margin-top: 2%;
   width: 100%;
+  height: 45px;
   display: flex;
-  height: auto;
+  align-items: center;
   list-style: none;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 5px;
   background: rgba(102, 97, 97, 0.5);
+  backdrop-filter: blur(6px);
+  padding: unset;
+  padding: 0px 100px;
 }
 
 ul[role=navigation] li {
   width: 100%;
-  margin: 0px 8px;
-  border-radius: 5px;
   color: #fff;
   background: rgba(255, 255, 255, 0.23);
   text-align: center;
+  border-left: 1px solid rgb(204 208 215);
+  border-right: 1px solid rgb(204 208 215);
 }
 
-ul[role=navigation] a {
-  font-weight: bold;
+ul[role=navigation] li:hover {
+  background: rgba(255, 255, 255, 0.4);
 }
 
 ul[role=navigation] a {
   color: #fff;
   background: transparent;
+  font-weight: bold;
+  text-decoration: none;
 }
-
-.selected a {
-  color: #fff;
-}
-
-ul[role=navigation] disabled a {
-  color: rgb(198, 197, 202);
-  border: 1px solid rgb(198, 197, 202);
-}
-
 
 @media only screen and (max-width: 600px) {
   .header {
@@ -330,5 +327,9 @@ ul[role=navigation] disabled a {
 
   .goal-actions svg {
     transform: scale(1.3);
+  }
+
+  li a{
+    font-size: smaller;
   }
 }

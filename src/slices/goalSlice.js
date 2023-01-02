@@ -40,6 +40,7 @@ export const goalSlice = createSlice({
                     if(goal.id === action.payload.id){
                         goal.status = action.payload.status;
                         goal.goalName = action.payload.goalName;
+                        goal.check = action.payload.check;
                     }
                 });
                 window.localStorage.setItem('goalList', JSON.stringify(goalListArr));

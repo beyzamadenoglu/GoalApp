@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
@@ -8,25 +8,17 @@ import GoalModal from "./GoalModal";
 
 function Goal({ goal }) {
   const dispatch = useDispatch();
-
   const [updateModal, setUpdateModal] = useState(false);
-  const [check, setCheck] = useState(false);
+  const [checked, setChecked] = useState(() => goal.status === "Done" ?  false : true);
+
   const type = "update";
-
-  useEffect(() => {
-    if (goal.status === "Done") {
-      setCheck(true);
-    } else {
-      setCheck(false);
-    }
-  }, [goal.status]);
-
   const handleCheck = () => {
+    setChecked(false)
     dispatch(
       updateItem({
         ...goal,
-        status: check ? "Done" : "Undone"
-      })
+        status: checked ? "Done" : "Undone",
+      }),
     );
   };
 
@@ -54,8 +46,8 @@ function Goal({ goal }) {
           <p className="goal-item">{goal.goalName}</p>
           <small className="goal-time">{goal.time}</small>
         </div>
-        <Tooltip title={`You ${check ? "" : "did not"} completed task!`}>
-          <Checkbox style={{ color: '#4a4e32b5' }} checked={check} onChange={handleCheck} />
+        <Tooltip title={`You ${checked ? "" : "did not"} completed task!`}>
+          <Checkbox style={{ color: '#4a4e32b5' }} checked={!checked} onChange={handleCheck} />
         </Tooltip>
       </div>
       <GoalModal
