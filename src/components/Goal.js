@@ -10,17 +10,8 @@ function Goal({ goal }) {
   const dispatch = useDispatch();
 
   const [updateModal, setUpdateModal] = useState(false);
-  const [check, setCheck] = useState(() => {
-    if (goal.status === "Done") {
-      return true;
-    }
-    return false;
-  });
+  const [check, setCheck] = useState(false);
   const type = "update";
-
-  useEffect(() => {
-    handleCheck();
-  }, [check]);
 
   useEffect(() => {
     if (goal.status === "Done") {
@@ -40,8 +31,7 @@ function Goal({ goal }) {
   };
 
   const handleCheck = () => {
-    setCheck(!check);
-
+    setCheck(!check)
     dispatch(
       updateItem({
         ...goal,

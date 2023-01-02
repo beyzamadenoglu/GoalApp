@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import Header from "../components/Header";
 import GoalModal from "../components/GoalModal";

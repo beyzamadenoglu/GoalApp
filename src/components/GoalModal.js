@@ -87,7 +87,6 @@ function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
                   id="goalName"
                   value={goalName}
                   onChange={(e) => setGoalName(e.target.value)}
-                  contenteditable
                 ></input>
               </label>
               <div className="container-select">
