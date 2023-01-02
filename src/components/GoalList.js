@@ -64,11 +64,11 @@ function GoalList() {
         <Goals currentList={currentItems} />
         <ReactPaginate
           breakLabel="..."
-          nextLabel="next >"
+          nextLabel=">>"
           onPageChange={handlePageClick}
           pageRangeDisplayed={5}
           pageCount={pageCount}
-          previousLabel="< previous"
+          previousLabel="<<"
           renderOnZeroPageCount={null}
         />
       </>

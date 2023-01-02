@@ -280,17 +280,23 @@ h1 {
 }
 
 ul[role=navigation] {
+  margin-top: 2%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  height: auto;
   list-style: none;
   cursor: pointer;
+  border-radius: 20px;
+  background: rgba(102, 97, 97, 0.5);
 }
 
 ul[role=navigation] li {
-  padding: 2px;
+  width: 100%;
+  margin: 0px 8px;
   border-radius: 5px;
-  border: 1px solid #6c7ac9;
-  color: #6c7ac9;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.23);
+  text-align: center;
 }
 
 ul[role=navigation] a {
@@ -304,7 +310,6 @@ ul[role=navigation] a {
 
 .selected a {
   color: #fff;
-  background: #6c7ac9;
 }
 
 ul[role=navigation] disabled a {
@@ -316,5 +321,14 @@ ul[role=navigation] disabled a {
 @media only screen and (max-width: 600px) {
   .header {
     font-size: 30px;
+  }
+  .goal-row {
+    font-size: smaller;
+    max-height: 55px;
+    
+  }
+
+  .goal-actions svg {
+    transform: scale(1.3);
   }
 }

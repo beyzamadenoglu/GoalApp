@@ -63,7 +63,6 @@ export const goalSlice = createSlice({
 
         updateFilter: (state, action) => {
             state.filter = action.payload;
-            console.log("anksoooo", action.payload)
         }
     }
 });

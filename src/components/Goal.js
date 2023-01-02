@@ -21,6 +21,15 @@ function Goal({ goal }) {
     }
   }, [goal.status]);
 
+  const handleCheck = () => {
+    dispatch(
+      updateItem({
+        ...goal,
+        status: check ? "Done" : "Undone"
+      })
+    );
+  };
+
   const editGoal = () => {
     setUpdateModal(true);
   };
@@ -28,16 +37,6 @@ function Goal({ goal }) {
   const deleteGoal = () => {
     dispatch(deleteItem(goal.id));
     toast.success("Goal Deleted.");
-  };
-
-  const handleCheck = () => {
-    setCheck(!check)
-    dispatch(
-      updateItem({
-        ...goal,
-        status: check ? "Done" : "Undone",
-      })
-    );
   };
 
   return (
