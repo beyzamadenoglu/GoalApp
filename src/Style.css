@@ -288,9 +288,6 @@ ul[role=navigation] {
   align-items: center;
   list-style: none;
   cursor: pointer;
-  border-radius: 5px;
-  background: rgba(102, 97, 97, 0.5);
-  backdrop-filter: blur(6px);
   padding: unset;
   padding: 0px 100px;
 }
@@ -298,6 +295,7 @@ ul[role=navigation] {
 ul[role=navigation] li {
   width: 100%;
   color: #fff;
+  backdrop-filter: blur(6px);
   background: rgba(255, 255, 255, 0.23);
   text-align: center;
   border-left: 1px solid rgb(204 208 215);
