@@ -27,6 +27,13 @@ function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
     }
   }, [typeModal, goal, openModal]);
 
+  const closeModal = () => {
+    setOpenModal(false);
+    document.getElementById("list-container").classList.remove("hidden");
+    document.getElementById("filter").classList.remove("hidden");
+    document.getElementById("add").classList.remove("hidden");
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (goalName.trim() && status) {
@@ -55,8 +62,7 @@ function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
           toast.error("No changes update!");
         }
       }
-      setOpenModal(false);
-     
+      closeModal();
     } else {
       toast.error("Goal should not be empty!!.");
     }
@@ -69,7 +75,7 @@ function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
           <AiOutlineCloseCircle
             className="modal-button add-close"
             role="button"
-            onClick={() => setOpenModal(false)}
+            onClick={ closeModal }
           />
           <div className="modal-container">
             <form onSubmit={(e) => handleSubmit(e)}>
@@ -102,12 +108,14 @@ function GoalModal({ openModal, setOpenModal, typeModal, goal }) {
                 <Button className="button"
                   type={submitButton}
                   text={typeModal === "update" ? "Update Goal" : "Add Goal"}
+                  color={"rgb(142 144 129 / 46%)"}
                 ></Button>
                 <Button
                 className="button"
                   type={button}
                   text={cancel}
                   func={() => setOpenModal(false)}
+                 color={"rgb(224 23 23 / 10%)"}
                 ></Button>
               </div>
             </form>

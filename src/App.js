@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./pages/Home";
+import Home from "./pages/Home";
 import "./Style.css";
 import { Toaster } from "react-hot-toast";
 import Snowflakes from "magic-snowflakes";
@@ -11,18 +11,18 @@ function App() {
   const snowflakes = new Snowflakes({ color: "#9c4647", zIndex: "-1" });
   snowflakes.start();
   return (
-    <>
+    <div className="app-container">
       <div className="content">
-        <Header />
-        <div className="container">
-          <GoalList />
-        </div>
+        <Home />
+      </div>
+      <div className="goal-body">
+        <GoalList />
       </div>
       <Toaster
         position="top-right"
         toastOptions={{ style: { fontSize: "" } }}
       ></Toaster>
-    </>
+    </div>
   );
 }
 

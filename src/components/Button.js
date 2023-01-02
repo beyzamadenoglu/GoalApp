@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Button({ text, type, func}) {
+function Button({ text, type, func, color}) {
   return (
     <>
-    <button type={type} onClick={func}>{text}</button>
+    <button style={{backgroundColor: color}} type={type} onClick={func}>{text}</button>
     </>
   
   )

@@ -2,9 +2,12 @@ import React from 'react'
 
 function StatusButton({ children, func }) {
   return (
-    <select onChange={func}>
-    {children}
-    </select>
+    <div id="filter">
+      <select onChange={func}>
+        {children}
+      </select>
+    </div>
+
   )
 }
 

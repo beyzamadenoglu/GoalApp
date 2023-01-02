@@ -8,7 +8,6 @@ body {
   background-color: #f5f5f5;
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100vh;
   background: gray;
   background: url("../src/Images/uibackground.jpg") center no-repeat;
@@ -16,6 +15,7 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
+
 
 .header {
   background: linear-gradient(-45deg, #85bfef, #7e2f22, #3f3a26, #dadfe5);
@@ -33,7 +33,7 @@ body {
   opacity: 0.85;
   line-height: 1.5 !important;
   font-weight: 600;
-  margin-top: unset;
+  margin-top: 16vh;
   margin-bottom: unset;
 }
 
@@ -70,6 +70,11 @@ body {
 
 .add-close:hover {
   background: rgba(255, 255, 255, 0.34);
+}
+
+.button {
+  text-align: right;
+  margin-bottom: 5px !important;
 }
 
 .modal-wrapper {
@@ -140,23 +145,24 @@ label {
 select {
   padding: 15px 10px;
   text-align: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   text-transform: uppercase;
-  appearance: none;
-  position: relative;
-  /** box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; **/
   background: transparent;
-  /**backdrop-filter: blur(5px); **/
   cursor: pointer;
   color: white;
   outline: none;
   font-family: 'Signika Negative', sans-serif;
   background: rgba(255, 255, 255, 0.19);
   box-shadow: rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset, rgba(255, 255, 255, 0.14) 0px 30px 60px -12px inset;
+  -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   border: none;
-  width: 22%;
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}
+
+
+.cancel {
+  background: rgb(224 23 23 / 10%) !important;
 }
 
 option {
@@ -189,11 +195,10 @@ option {
   display: inline-block;
   border: 0;
   text-decoration: none;
-  margin: 4px 13px;
-  padding: 4px;
+  margin: 0px 10px;
+  padding: 13px 12px;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   color: rgba(255, 255, 255, 0.8);
@@ -203,7 +208,11 @@ option {
   text-transform: uppercase;
 }
 
-.list-container {
+.action-buttons button:hover{
+  filter: brightness(85%);
+}
+
+#list-container {
   background: rgba(102, 97, 97, 0.17);
   padding: 13px;
   backdrop-filter: blur(4px);
@@ -219,11 +228,6 @@ option {
   border-radius: 7px;
 }
 
-.button svg {
-  margin-left: 496px;
-}
-
-
 .goal-actions {
   display: flex;
   flex-direction: column;
@@ -237,9 +241,10 @@ option {
 
 .goal-content {
   width: 100%;
-  color: #252218;
+  color: #373123;;
   font-weight: bold;
 }
+
 
 .goal-content small {
   float: right;
@@ -252,28 +257,17 @@ option {
   font-style: italic;
   color: rgb(68, 68, 68);
 }
-.no-goal-text{
+
+.hidden {display: none;}
+
+.no-goal-text {
   text-align: center;
   font-family: 'Pacifico', cursive;
   font-size: 20px;
-
- 
 }
 
 @media only screen and (max-width: 600px) {
   .header {
-    margin-top: -15%;
     font-size: 30px;
   }
-
-  .list-container {}
-
-  .goal-row {}
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .header {}
-
-  .list-container {}
 }
