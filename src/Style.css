@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 body {
   font-family: 'Signika Negative', sans-serif;
@@ -158,6 +157,7 @@ select {
   border: none;
   margin-top: 15px !important;
   margin-bottom: 15px !important;
+  font-weight: bold;
 }
 
 
@@ -217,6 +217,10 @@ option {
   padding: 13px;
   backdrop-filter: blur(4px);
   border-radius: 20px;
+}
+
+#list-container p {
+  margin-top: 3%;
 }
 
 .goal-row {
@@ -279,6 +283,10 @@ img {
 h1 {
   color: #6c7ac9;
 }
+h2{
+  text-align: start;
+  margin-bottom: 1.7rem !important;
+}
 
 ul[role=navigation] {
   margin-top: 2%;
@@ -319,8 +327,7 @@ ul[role=navigation] a {
   }
   .goal-row {
     font-size: smaller;
-    max-height: 55px;
-    
+    height: 66px;
   }
 
   .goal-actions svg {

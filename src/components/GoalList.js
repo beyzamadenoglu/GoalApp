@@ -15,7 +15,6 @@ function GoalList() {
 
   const filteredList = [...goalList];
 
-
   const textList = {
     done: "You gotta be workin hard!",
     undone: "No undone tasks! Great job!",
@@ -46,17 +45,11 @@ function GoalList() {
   function PaginatedItems({ itemsPerPage }) {
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     const currentItems = filteredByStatusList.slice(itemOffset, endOffset);
-    console.log("xurrent", currentItems)
     const pageCount = Math.ceil(filteredByStatusList.length / itemsPerPage);
-
 
     const handlePageClick = (event) => {
       const newOffset = (event.selected * itemsPerPage) % filteredByStatusList.length;
-      console.log(
-        `User requested page number ${event.selected}, which is offset ${newOffset}`
-      );
       setItemOffset(newOffset);
     };
     return (
@@ -84,8 +77,6 @@ function GoalList() {
         <option value="Done">done</option>
       </StatusButton>}
          <PaginatedItems itemsPerPage={5} />
-   
-      
     </>
   );
 }
