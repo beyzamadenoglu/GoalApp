@@ -1,17 +1,16 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {
+    getInitialGoals,
+    isAvailableInLocalStorageInArray,
+    removeItemLocalStorageInArray,
+    operationItemtoLocalStorageInArray
+} from '../utils/goal'
 
-const getInitialGoals = () => {
-    const localList = window.localStorage.getItem('goalList');
-    if(localList){
-        return JSON.parse(localList);
-    } 
-    window.localStorage.setItem('goalList', JSON.stringify([]));
-    return [];
-}
+const GOAL_LIST = 'goalList';
 
 const initialState = { 
     filter: "all",
-    goalList: getInitialGoals(), 
+    goalList: getInitialGoals(GOAL_LIST), 
 }
 
 export const goalSlice = createSlice({
@@ -19,46 +18,34 @@ export const goalSlice = createSlice({
     initialState: initialState,
     reducers: {
         addGoal:(state, action) => {
-            state.goalList.push(action.payload);
-            const goalList = window.localStorage.getItem('goalList');
-            if(goalList){
-                const goalListArr = JSON.parse(goalList);
-                goalListArr.push({
-                    ...action.payload,
-                });
-                window.localStorage.setItem('goalList', JSON.stringify(goalListArr));
-            } else{
-                window.localStorage.setItem('goalList', JSON.stringify([{...action.payload}]));
-            }
+            const goalListInState = state.goalList;
+            const payload = action.payload
+            
+            goalListInState.push(payload);
+            operationItemtoLocalStorageInArray(GOAL_LIST, goalListInState)
         },
 
         updateItem:(state, action) => {
-            const goalList = window.localStorage.getItem('goalList');
-            if(goalList){
-                const goalListArr = JSON.parse(goalList);
-                goalListArr.forEach(goal => {
-                    if(goal.id === action.payload.id){
-                        goal.status = action.payload.status;
-                        goal.goalName = action.payload.goalName;
-                        goal.check = action.payload.check;
-                    }
-                });
-                window.localStorage.setItem('goalList', JSON.stringify(goalListArr));
-                state.goalList = [...goalListArr];
-            }
+            const parsedGoalListArray = JSON.parse(isAvailableInLocalStorageInArray(GOAL_LIST))
+            const { id } = action.payload;
+            
+            const newGoalList = parsedGoalListArray && parsedGoalListArray.map(
+                goal => goal.id === id 
+                    ? goal = action.payload
+                    : goal
+                );
+            
+            state.goalList = newGoalList;
+            operationItemtoLocalStorageInArray(GOAL_LIST, newGoalList)
         },
 
         deleteItem:(state, action) => {
-            const goalList = window.localStorage.getItem('goalList');
-            if(goalList){
-                const goalListArr = JSON.parse(goalList);
-                goalListArr.forEach((goal, index) => {
-                    if(goal.id === action.payload){
-                        goalListArr.splice(index, 1);
-                    }
-                });
-                window.localStorage.setItem('goalList', JSON.stringify(goalListArr));
-                state.goalList = goalListArr;
+            const goalListInState = state.goalList
+            const removedGoal = removeItemLocalStorageInArray(GOAL_LIST)
+            
+            if(removedGoal) {
+                const goalIndex = goalListInState.findIndex((goal)=> goal.id === removedGoal.id)
+                goalListInState.splice(goalIndex, 1);
             }
         },
 
